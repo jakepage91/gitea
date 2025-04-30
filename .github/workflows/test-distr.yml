@@ -18,8 +18,8 @@ jobs:
         uses: glasskube/distr-create-version-action@v1
         with:
           api-token: ${{ secrets.DISTR_API_TOKEN }}
-          application-id: 'c27c3503-e2c8-4113-8293-9bf9cceb87e3' # This should be replaced with your actual application ID from Distr
-          version-name: 'v1.3.0'
+          application-id: '2c7798c7-f85d-4d4f-9a86-ac527b53f54c' # This should be replaced with your actual application ID from Distr
+          version-name: 'v1.1.0'
           compose-file: ${{ github.workspace }}/docker-compose-prod.yml
           template-file: ${{ github.workspace }}/template.env
 
