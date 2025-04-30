@@ -129,7 +129,7 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 
 **How do you pronounce Gitea?**
 
-Gitea is pronounced [/ɡɪ’ti:/](https://youtu.be/EM71-2uDAoY) as in "gi-tea" with a hard g.
+Gitea is pronounced [/ɡɪ'ti:/](https://youtu.be/EM71-2uDAoY) as in "gi-tea" with a hard g.
 
 **Why is this not hosted on a Gitea instance?**
 
@@ -211,3 +211,27 @@ for the full license text.
 ![Home](https://dl.gitea.com/screenshots/org_home.png)
 
 </details>
+
+# Distr Create Version Action Test
+
+This repository contains a minimal setup to test the [glasskube/distr-create-version-action](https://github.com/glasskube/distr-create-version-action) GitHub Action.
+
+## Files
+
+- `docker-compose-prod.yml` - A simple Docker Compose file that uses environment variables
+- `template.env` - An environment variables template file with default values
+- `.github/workflows/test-distr.yml` - GitHub workflow file that uses the distr-create-version-action
+
+## Setup Instructions
+
+1. Fork or clone this repository
+2. Sign up for [Distr](https://distr.sh)
+3. Create an application in Distr and note its Application ID
+4. Generate a Distr API token (see https://distr.sh/docs/integrations/personal-access-token/)
+5. Add your Distr API token as a GitHub repository secret named `DISTR_API_TOKEN`
+6. Update the `application-id` in the `.github/workflows/test-distr.yml` file with your Distr application ID
+7. Push the changes to GitHub to trigger the workflow or manually trigger it
+
+## Expected Output
+
+When the workflow runs successfully, it will create a new version of your application in Distr and print the created version ID.

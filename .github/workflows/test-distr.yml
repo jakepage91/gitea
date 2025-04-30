@@ -1,0 +1,28 @@
+name: Test Distr Create Version Action
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-distr-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Create Distr Version
+        id: distr-create-version
+        uses: glasskube/distr-create-version-action@v1
+        with:
+          api-token: ${{ secrets.DISTR_API_TOKEN }}
+          application-id: 'c27c3503-e2c8-4113-8293-9bf9cceb87e3' # This should be replaced with your actual application ID from Distr
+          version-name: 'v1.3.0'
+          compose-file: ${{ github.workspace }}/docker-compose-prod.yml
+          template-file: ${{ github.workspace }}/template.env
+
+      - name: Print Application Version ID
+        id: output
+        run: echo "Created version ID is ${{ steps.distr-create-version.outputs.created-version-id }}" 
